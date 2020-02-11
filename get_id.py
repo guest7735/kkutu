@@ -7,3 +7,5 @@ html = res.text
 userId= BeautifulSoup(html, "html.parser")
 k = userId.select('.div class')
 print(k)
+
+#안녕하세요

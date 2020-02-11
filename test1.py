@@ -32,9 +32,10 @@ def userId():
     res.encoding = "utf-8"
     html = res.text
     userId= BeautifulSoup(html, "html.parser")
-    userId = str(userId)
+    #userId = str(userId)
     #k = userId.select('.div class')
-    Id = userId.find("UserMessage")
+    Id = html.find_all(id='UserMessage')
+    #Id = userId.find("UserMessage")
     print(Id)
 
     #print(userId)
@@ -43,6 +44,15 @@ def userId():
 
 #sleep(30) 
 
-userId()
+##userId()
+#kkutu_source = driver.page_source
+#print(kkutu_source.index("UserMessage")) #print(kkutu_source.find("UserMessage"))
+#print(kkutu_source[kkutu_source.index("UserMessage"):kkutu_source.index("UserMessage") + 16])
+kkutu_source = driver.page_source
+source = kkutu_source.index("UserMessage") #print(kkutu_source.find("UserMessage"))
+source = kkutu_source[kkutu_source.index("UserMessage"):kkutu_source.index("UserMessage") + 16]
+xpath = '//*[@id="' + source + '"]'
+print(xpath)
+print(type(xpath))
 
 print("게임종료!!")
