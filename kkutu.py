@@ -71,6 +71,7 @@ def userId():
     return xpath
 
 a = input()
+#입력해야 게임 타이핑 시작!
 
 while True:
     if "게임 끝!" in get_style('//*[@id="GameBox"]/div/div[1]/div[6]/div/div[1]'):
