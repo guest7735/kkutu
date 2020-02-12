@@ -20,7 +20,7 @@ for i in range(1, a):
     name2 = random.choice(names)
     list_.append(name2)
     names.remove(name2)
-    print(list_)
+    #print(list_)
     
 #확인
 
