@@ -32,4 +32,3 @@ for i in range(1, member):
         print("당신의 마니또는 %s입니다. \n" % list_[index_ + 1])
     elif index_ % 2 != 0:
         print("당신의 마니또는 %s입니다. \n" % list_[index_ - 1])
-        print("당신의 마니또는 %s입니다. \n" % list_[index_ - 1])
