@@ -22,7 +22,7 @@ for i in range(1, a):
     names.remove(name2)
     print(list_)
     
-
+#확인
 for i in range(1, member):
     print("이름을 입력하세요 : ")
     name = input()
