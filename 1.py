@@ -10,8 +10,8 @@ list_.append("채지훈")
 names.remove("김민서")
 list_.append("김민서")
 
-print(names)
-print(list_)
+#print(names)
+#print(list_)
 
 for i in range(1, a):
     name1 = random.choice(names)
