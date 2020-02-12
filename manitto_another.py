@@ -10,19 +10,19 @@ list_.append("김민서")
 names.remove("채지훈")
 list_.append("채지훈")
 
-print(names)
-print(list_)
+#print(names)
+#print(list_)
 
 for i in range(1, member):
     name1 = random.choice(names)
     list_.append(name1)
     names.remove(name1)
-    print(list_)
+    #print(list_)
     
 #확인
 list_.remove("채지훈")
 list_.append("채지훈")
-print(list_)
+#print(list_)
 
 i = 0
 while i < 16:
