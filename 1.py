@@ -23,6 +23,7 @@ for i in range(1, a):
     print(list_)
     
 #확인
+
 for i in range(1, member):
     print("이름을 입력하세요 : ")
     name = input()
@@ -30,4 +31,5 @@ for i in range(1, member):
     if index_ % 2 == 0:
         print("당신의 마니또는 %s입니다. \n" % list_[index_ + 1])
     elif index_ % 2 != 0:
+        print("당신의 마니또는 %s입니다. \n" % list_[index_ - 1])
         print("당신의 마니또는 %s입니다. \n" % list_[index_ - 1])
