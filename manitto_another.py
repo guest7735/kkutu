@@ -20,12 +20,21 @@ for i in range(1, member):
     print(list_)
     
 #확인
+list_.remove("채지훈")
+list_.append("채지훈")
+print(list_)
 
-for i in range(1, member):
+i = 0
+while i < 16:
     print("이름을 입력하세요 : ")
     name = input()
+    if not name in list_:
+        print("없는 이름입니다. 다시 입력해주세요\n\n")
+        continue
     index_ = list_.index(name)
     if index_ == 15:
-        print("당신의 마니또는 %s입니다. \n\n" % list_[0])    
+        print("당신의 마니또는 %s입니다. \n\n" % list_[0])
+        i+=1    
     else:
         print("당신의 마니또는 %s입니다. \n\n" % list_[index_ + 1])
+        i+=1
