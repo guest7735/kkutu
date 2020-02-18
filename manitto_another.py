@@ -20,8 +20,8 @@ for i in range(1, member):
     #print(list_)
     
 #확인
-list_.remove("김민서")
-list_.append("김민서")
+list_.remove("채지훈")
+list_.append("채지훈")
 #print(list_)
 
 i = 0
