@@ -84,7 +84,8 @@ while True:
         start = now()
         print(start)#눈으로 확인하기 위해 잠깐 출력함
         if '(' in start:
-            start = start.split('(')[0] #'(' 이 여는 괄호를 기준으로 앞에 있는 단어 하나만 가져온다.
+            start = start[0].split('(') #륨(윰) 이렇게 되어있으면 맨 처음에는 '(' 시작 괄호로 나누면 ["륨", "윰)"] 이렇게 됌
+            start = start[1].split(')') #["륨", "윰)"] 이런 리스트에서 [1], 즉 두번째 원소를 ")" 끝 괄호로 split하면 "윰" 만 남는다
         if len(start) == 1:
             attack(start)
     #안되는 경우 찾고 조금씩 정비하기
