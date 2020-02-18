@@ -1,5 +1,5 @@
 from selenium import webdriver
-from time import sleep
+import time
 import random
 import requests
 from bs4 import BeautifulSoup
@@ -28,8 +28,11 @@ def now():
     #공격하는 함수
 def attack(start):
     word_list = get_word(start)
+    """
     if len(word_list) == 0:
         print("찾을 수 없음")
+        start = start.split('(')[0]
+        word_list = get_word(start)
         return
 
     length = len(word_list)
@@ -37,9 +40,11 @@ def attack(start):
         length = 5
 
     i = random.randrange(0, length)
-    message = word_list[i]
-    print(message)
+    """
+    message = word_list#[i]
+    #print(message)
     send(message) #send함수 실행
+    result.remove(message)
 
     #특정 글자로 시작하는 단어를 찾아 긴 순서대로 출력합니다.
 def get_word(start):
@@ -51,7 +56,7 @@ def get_word(start):
                 text_list.append(text)
 
     text_list.sort(key=lambda item: (len(item), item), reverse=True) #정렬부분
-    return text_list
+    return text_list[0]
 
     #단어를 작성해서 보내는 함수
 def send(message):
@@ -59,7 +64,6 @@ def send(message):
     input_tag = driver.find_element_by_xpath(userId())
     input_tag.send_keys(message)
     click_tag = driver.find_element_by_xpath('//*[@id="ChatBtn"]')
-    sleep(2)
     click_tag.click()
 
 #접속되었을때 user ID얻는 함수
@@ -84,8 +88,15 @@ while True:
         start = now()
         print(start)#눈으로 확인하기 위해 잠깐 출력함
         if '(' in start:
-            start = start[0].split('(') #륨(윰) 이렇게 되어있으면 맨 처음에는 '(' 시작 괄호로 나누면 ["륨", "윰)"] 이렇게 됌
-            start = start[1].split(')') #["륨", "윰)"] 이런 리스트에서 [1], 즉 두번째 원소를 ")" 끝 괄호로 split하면 "윰" 만 남는다
+            start = start[2:3]
+            """
+            if len(word_list) == 0:
+                start = start.split('(')[0]
+                word_list = get_word(start)
+            """
+            #start = start.split('(') #륨(윰) 이렇게 되어있으면 맨 처음에는 '(' 시작 괄호로 나누면 ["륨", "윰)"] 이렇게 됌
+            #start = start[1].split(')') #["륨", "윰)"] 이런 리스트에서 [1], 즉 두번째 원소를 ")" 끝 괄호로 split하면 "윰" 만 남는다
+            #start = start[0]
         if len(start) == 1:
             attack(start)
     #안되는 경우 찾고 조금씩 정비하기
