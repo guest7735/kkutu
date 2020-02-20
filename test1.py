@@ -4,6 +4,7 @@ import random
 import requests
 from bs4 import BeautifulSoup
 from operator import eq
+import sys
 
 
 driver = webdriver.Chrome("chromedriver.exe")
@@ -26,6 +27,9 @@ driver.get("https://kkutu.co.kr/?server=0")
 #for line in f:
 #    result.append(line)
 
+
+
+a = input()
 #접속되었을때 user ID얻는 함수
 def userId():
     res = requests.get("https://kkutu.co.kr/?server=0")
@@ -56,3 +60,12 @@ print(xpath)
 print(type(xpath))
 
 print("게임종료!!")
+
+
+source = driver.page_source
+print(source)
+print("\n")
+source = source[source.find("round-current"):]
+source = source[source.find(">")+1:]
+source = source[:source.find("<")]
+print(source)
