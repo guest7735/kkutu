@@ -111,12 +111,30 @@ def del_list_():
         print(list_)
 
 
+#상대방의 단어를 가져오는 함수
+def history_word():
+    h_w_source = driver.page_source
+    source = h_w_source.index("ellipse history-item expl-mother")
+    source_end = h_w_source.index("history-class")
+    source = source + 55
+    source_end = source_end - 15
+    h_w = h_w_source[source : source_end]
+    list_ += h_w
+    print(list_)
+    return h_w
+    """
+    element = driver.find_elements_by_class_name('ellipse history-item expl-mother')
+    list_ += element[0]
+    print(list_)
+    """
+
 a = input()
 #입력해야 게임 타이핑 시작!
 word = getCurrentRounds()
 print(word)
 
 while True:
+    i = 0
     try:
         if "none" in get_style('//*[@id="GameBox"]/div/div[3]'):
             del_list_()
@@ -124,10 +142,16 @@ while True:
             continue
         if "block" in get_style('//*[@id="GameBox"]/div/div[3]'):
             del_list_()
+            #history_word()
             
             #현재 시작 단어 구하기
             start = now()
             print(start)#눈으로 확인하기 위해 잠깐 출력함
+            if start == "랙(잭)":
+                start = "랙"
+                attack(start)
+                continue
+        
             if '(' in start:
                 start = start[2:3]
                 """
@@ -139,6 +163,7 @@ while True:
                 #start = start[1].split(')') #["륨", "윰)"] 이런 리스트에서 [1], 즉 두번째 원소를 ")" 끝 괄호로 split하면 "윰" 만 남는다
                 #start = start[0]
             if len(start) == 1:
+                #time.sleep(1.5)    핵 안걸리는 용도
                 attack(start)
         #안되는 경우 찾고 조금씩 정비하기
     except:
