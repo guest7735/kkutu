@@ -41,26 +41,44 @@ def now():
 
     #공격하는 함수
 def attack(start):
-    
-    word_list = get_word(start)
-    """
-    if len(word_list) == 0:
-        print("찾을 수 없음")
-        start = start.split('(')[0]
-        word_list = get_word(start)
+    if start == "지":
+        message = "지랄버릇"
+        send(message)
+        return
+    if start == "독":
+        message = "독그릇"
+        send(message)
+        return
+    if start == "타":
+        message = "타래무늬그릇"
+        send(message)
+        return
+    if start == "어":
+        message = "어금이노릇"
+        send(message)
+        return
+    if start == "계":
+        message = "계그릇"
+        send(message)
+        return
+    if start == "달":
+        message = "달래꽃무릇"
+        send(message)
+        return
+    if start == "애":
+        message = "애기중의무릇"
+        send(message)
+        return
+    if start == "신":
+        message = "신선로모양굽그릇"
+        send(message)
         return
 
-    length = len(word_list)
-    if length > 10:
-        length = 5
+    word_list = get_word(start)
 
-    i = random.randrange(0, length)
-    """
     message = word_list#[i]
-
     #print(message)
     send(message) #send함수 실행
-
 
     #특정 글자로 시작하는 단어를 찾아 긴 순서대로 출력합니다.
 def get_word(start):

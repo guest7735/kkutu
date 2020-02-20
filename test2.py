@@ -36,8 +36,16 @@ def getCurrentRounds():
     """
     return source
 
-for i in range(1, 100):
-    a = input()
-    if a == "finish":
-        break
-    print(getCurrentRounds())
+def get():
+    h_w_source = driver.page_source
+    source = h_w_source.index("ellipse history-item expl-mother")
+    source_end = h_w_source.index("history-class")
+    source = source + 55
+    source_end = source_end - 15
+    h_w = h_w_source[source : source_end]
+    list_ += h_w
+    print(list_)
+    
+a = input()
+
+get()
