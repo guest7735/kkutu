@@ -18,7 +18,7 @@ for i in range(1, member):
     list_.append(name1)
     names.remove(name1)
     #print(list_)
-    
+
 #확인
 list_.remove("채지훈")
 list_.append("채지훈")
@@ -38,3 +38,5 @@ while i < 16:
     else:
         print("당신의 마니또는 %s입니다. \n\n" % list_[index_ + 1])
         i+=1
+
+#print(list_)
