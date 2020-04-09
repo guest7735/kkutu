@@ -15,7 +15,7 @@ driver.get("https://kkutu.co.kr/?server=0")
 
 #사전 텍스트 데이터 불러오기
 f = open("kkutu_co_kr.txt", encoding="utf-8")
-result = []
+result = [] #단어들이 들어있는 변수
 for line in f:
     result.append(line)
 
@@ -32,12 +32,14 @@ def getCurrentRounds():
 #현재 자신의 차례인지 아닌지 판단
 def get_style(str):
     return driver.find_element_by_xpath(str).get_attribute("style")
+    
 
 #현재의 단어를 얻는 함수
 def now():
     element = driver.find_elements_by_class_name('jjo-display')
     print(element[0])
     return element[0].text
+    
 
     #공격하는 함수
 def attack(start):
@@ -80,6 +82,7 @@ def attack(start):
     #print(message)
     send(message) #send함수 실행
 
+
     #특정 글자로 시작하는 단어를 찾아 긴 순서대로 출력합니다.
 def get_word(start):
     text_list = []
@@ -90,19 +93,19 @@ def get_word(start):
                 text_list.append(text)
 
     text_list.sort(key=lambda item: (len(item), item), reverse=True) #정렬부분
-    return text_list[0]
+    return text_list[0] #제일 긴 단어 가져오기
 
     #단어를 작성해서 보내는 함수
 def send(message):
-    print(message)
+    print(message)#한번 더 출력
     input_tag = driver.find_element_by_xpath(userId())
     input_tag.send_keys(message + "\n")
     time.sleep(0.2)
     #click_tag = driver.find_element_by_xpath('//*[@id="ChatBtn"]')
     #click_tag.click()
-    #각 라운드마다 사용한 단어 모으기
+    #각 라운드마다 사용한 단어 모으기. 한번 사용한 단어는 다음 라운드가 되기 전까지 사용불가
     list_.append(message)
-    #각 라운드마다 사용한 단어 없애기
+    #전체단어목록에서 각 라운드마다 사용한 단어 없애기
     result.remove(message)
     print(list_)
     
@@ -120,11 +123,11 @@ def del_list_():
     global list_
     global result
     word_ = getCurrentRounds()
-    if word_ != word:
+    if word_ != word: #라운드가 바뀐 경우
         print(list_)
-        result += list_
-        list_ = []
-        word = getCurrentRounds()
+        result += list_ #전 라운드에 사용하고 사용하지 못하게 한 단어들을 다시 단어목록에 추가
+        list_ = [] #사용한 단어를 저장하는 변수는 라운드가 지났으니 reset
+        word = getCurrentRounds() #새 라운드 단어 저장
         print("\n")
         print(list_)
 
@@ -164,11 +167,14 @@ while True:
             
             #현재 시작 단어 구하기
             start = now()
-            print(start)#눈으로 확인하기 위해 잠깐 출력함
-            if start == "랙(잭)":
+            print(start)
+            #눈으로 확인하기 위해 잠깐 출력함
+
+            if start == "랙(잭)": #예외단어 추가
                 start = "랙"
                 attack(start)
                 continue
+            
         
             if '(' in start:
                 start = start[2:3]
